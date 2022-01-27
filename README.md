@@ -1,6 +1,8 @@
 # Homework
 ### `task #2`
-app.tsx file - the issue in this file is that the useEffect doesn't have any dependencies so it runs every time a component changes state. Since in the useEffect there is a for cycle with setState, this useEffect will run every time we get to the new iteration of the for cycle and it will call API every time too. Also setState doesn't have to be in for cycle to update component. After every iteration of the for cycle the setState would create a new array which would cause rerender.
+app.tsx file - the issue in this file is that the useEffect doesn't have any dependencies so it runs every time a component changes state. Since in the useEffect there is a for cycle with setState, this useEffect will run every time we get to the new iteration of the for cycle and it will call API every time too. Also setState doesn't have to be in for cycle to update component. After every iteration of the for cycle the setState would create a new array which would cause rerender. 
+
+app.tsx file - Todo is missing key.
 
 ### `task #6`
 Since I used react-router-dom package, it eliminated the need of using shouldComponentUpdate life cycle because in this aplication, Todo component is not updated on the page/view where it is used/shown. 
