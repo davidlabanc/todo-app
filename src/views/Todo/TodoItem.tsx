@@ -1,6 +1,6 @@
-import React from "react";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { TodoInterface } from '../../ts/interfaces/app_interfaces';
 
 // class TodoItem extends React.Component<any> {
 
@@ -24,8 +24,13 @@ import { Link } from 'react-router-dom';
 
 // export default TodoItem;
 
+interface TodoItemInterface {
+	todo: TodoInterface;
+	number: number;
+}
 
-function TodoItem(props) {
+
+function TodoItem(props : TodoItemInterface ) {
 	return (
 		<Container>
 			<StyledLink to={"/detail/" + props.todo.id}>{(props.number + 1) + ". " + props.todo.title}</StyledLink>

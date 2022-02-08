@@ -1,7 +1,7 @@
 import { createContext } from 'react';
-
+import { TodoInterface } from '../../ts/interfaces/app_interfaces';
 interface TodoContextInterface {
-  todos: { id: string; title: string; completed: Boolean }[];
+  todos: TodoInterface[];
   setCompleted: Function;
 }
 

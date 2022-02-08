@@ -1,10 +1,11 @@
 import { useState, useCallback } from 'react'
+import { TodoInterface } from '../../ts/interfaces/app_interfaces';
 
 export const useTodo = () => {
-  const [items, setItems] = useState<{ id: string; title: string; completed: Boolean }[]>([])
+  const [items, setItems] = useState<TodoInterface[]>([])
 
   const setTodos = useCallback(
-    (items : { id: string; title: string; completed: Boolean }[]) => {
+    (items: TodoInterface[]) => {
       let new_items = items.map(item => { return { ...item, id: item.id.toString() } })
       setItems(new_items)
     },

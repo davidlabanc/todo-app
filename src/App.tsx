@@ -4,12 +4,13 @@ import { Routes, Route } from 'react-router'
 
 import { TodoContext } from './shared/context/todo-context';
 import { useTodo } from './shared/hooks/todo-hook';
+import { TodoInterface } from "./ts/interfaces/app_interfaces";
 
 import Description from './views/Description/Description';
 import Todo from './views/Todo/Todo';
 
 // rework this into regular api call, feel free to use any open api
-var todos = (): Promise<{ id: string; title: string; completed: Boolean}[]> => {
+var todos = (): Promise<TodoInterface[]> => {
   return fetch('https://jsonplaceholder.typicode.com/users/1/todos')
     .then((response) => response.json())
 };

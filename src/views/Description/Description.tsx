@@ -4,14 +4,9 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import _ from 'lodash';
 
 import { TodoContext } from '../../shared/context/todo-context';
+import { TodoInterface } from '../../ts/interfaces/app_interfaces';
 
-interface TodoDetailInterface {
-  id: string;
-  title: string;
-  completed: Boolean
-}
-
-var getTodoById = (id: String | undefined): Promise<TodoDetailInterface> => {
+var getTodoById = (id: String | undefined): Promise<TodoInterface> => {
   return fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
     .then((response) => response.json())
 };
@@ -33,13 +28,13 @@ function Description() {
   const { todos, setCompleted } = useContext(TodoContext)
   const params = useParams()
   const navigate = useNavigate()
-  const [todo, setTodo] = useState<TodoDetailInterface>();
+  const [todo, setTodo] = useState<TodoInterface>();
 
   useEffect(() => {
     (
       async () => {
         if (todo) return
-        const getTodo = todos.find(item => item.id === params?.id)
+        const getTodo = todos.find(item => item.id === params.id)
 
         if (!getTodo) {
           const data = await getTodoById(params.id)
@@ -86,7 +81,6 @@ function Description() {
         </Button>
       </IconContainer>
     </>
-
   )
 }
 
@@ -172,13 +166,13 @@ const Button = styled.div`
               -2px -2px 4px rgba(255, 255, 255, .4),
               2px 2px 2px rgba(255, 255, 255, .05),
               2px 2px 4px rgba(0, 0, 0, .1);
-}
-&:active {
-  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, .7),
-              inset -2px -2px 4px rgba(255, 255, 255, .5),
-              inset 2px 2px 2px rgba(255, 255, 255, .075),
-              inset 2px 2px 4px rgba(0, 0, 0, .15);
-}
+  }
+  &:active {
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, .7),
+                inset -2px -2px 4px rgba(255, 255, 255, .5),
+                inset 2px 2px 2px rgba(255, 255, 255, .075),
+                inset 2px 2px 4px rgba(0, 0, 0, .15);
+  }
 `;
 
 const Header = styled.div`
